@@ -59,7 +59,8 @@ func TestUSMEVMClient_DialDetect(t *testing.T) {
 			t.Run(c.Name, func(t *testing.T) {
 				resp, err := client.DialDetect(context.Background(), &c.Req)
 				if err != nil {
-					t.Logf("err:%v", err)
+					t.Errorf("err:%v", err)
+					return
 				}
 				if resp.IsIntercept != c.Expected.IsIntercept {
 					t.Error("test fail")
